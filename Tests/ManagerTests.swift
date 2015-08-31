@@ -150,7 +150,7 @@ class ManagerConfigurationHeadersTestCase: BaseTestCase {
 
         var request: NSURLRequest?
         var response: NSHTTPURLResponse?
-        var result: Result<AnyObject>?
+        var result: AFResult<AnyObject>?
 
         // When
         manager.request(.GET, "https://httpbin.org/headers")

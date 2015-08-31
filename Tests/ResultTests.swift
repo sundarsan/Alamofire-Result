@@ -32,7 +32,7 @@ class ResultTestCase: BaseTestCase {
     func testThatIsSuccessPropertyReturnsTrueForSuccessCase() {
         // Given
         // When
-        let result = Result.Success("success")
+        let result = AFResult.Success("success")
 
         // Then
         XCTAssertTrue(result.isSuccess, "result is success should be true for success case")
@@ -41,7 +41,7 @@ class ResultTestCase: BaseTestCase {
     func testThatIsSuccessPropertyReturnsFalseForFailureCase() {
         // Given
         // When
-        let result = Result<String>.Failure(NSData(), error)
+        let result = AFResult<String>.Failure(NSData(), error)
 
         // Then
         XCTAssertFalse(result.isSuccess, "result is success should be true for failure case")
@@ -52,7 +52,7 @@ class ResultTestCase: BaseTestCase {
     func testThatIsFailurePropertyReturnsFalseForSuccessCase() {
         // Given
         // When
-        let result = Result.Success("success")
+        let result = AFResult.Success("success")
 
         // Then
         XCTAssertFalse(result.isFailure, "result is failure should be false for success case")
@@ -61,7 +61,7 @@ class ResultTestCase: BaseTestCase {
     func testThatIsFailurePropertyReturnsTrueForFailureCase() {
         // Given
         // When
-        let result = Result<String>.Failure(NSData(), error)
+        let result = AFResult<String>.Failure(NSData(), error)
 
         // Then
         XCTAssertTrue(result.isFailure, "result is failure should be true for failure case")
@@ -72,7 +72,7 @@ class ResultTestCase: BaseTestCase {
     func testThatValuePropertyReturnsValueForSuccessCase() {
         // Given
         // When
-        let result = Result.Success("success")
+        let result = AFResult.Success("success")
 
         // Then
         XCTAssertEqual(result.value ?? "", "success", "result value should match expected value")
@@ -81,7 +81,7 @@ class ResultTestCase: BaseTestCase {
     func testThatValuePropertyReturnsNilForFailureCase() {
         // Given
         // When
-        let result = Result<String>.Failure(NSData(), error)
+        let result = AFResult<String>.Failure(NSData(), error)
 
         // Then
         XCTAssertNil(result.value, "result value should be nil for failure case")
@@ -92,7 +92,7 @@ class ResultTestCase: BaseTestCase {
     func testThatDataPropertyReturnsNilForSuccessCase() {
         // Given
         // When
-        let result = Result.Success("success")
+        let result = AFResult.Success("success")
 
         // Then
         XCTAssertNil(result.data, "result data should be nil for success case")
@@ -101,8 +101,8 @@ class ResultTestCase: BaseTestCase {
     func testThatDataPropertyReturnsDataForFailureCase() {
         // Given
         // When
-        let resultWithData = Result<String>.Failure(NSData(), error)
-        let resultWithoutData = Result<String>.Failure(nil, error)
+        let resultWithData = AFResult<String>.Failure(NSData(), error)
+        let resultWithoutData = AFResult<String>.Failure(nil, error)
 
         // Then
         XCTAssertNotNil(resultWithData.data, "result with data should not be nil for failure case")
@@ -114,7 +114,7 @@ class ResultTestCase: BaseTestCase {
     func testThatErrorPropertyReturnsNilForSuccessCase() {
         // Given
         // When
-        let result = Result.Success("success")
+        let result = AFResult.Success("success")
 
         // Then
         XCTAssertTrue(result.error == nil, "result error should be nil for success case")
@@ -123,7 +123,7 @@ class ResultTestCase: BaseTestCase {
     func testThatErrorPropertyReturnsErrorForFailureCase() {
         // Given
         // When
-        let result = Result<String>.Failure(nil, error)
+        let result = AFResult<String>.Failure(nil, error)
 
         // Then
         XCTAssertTrue(result.error != nil, "result error should not be nil for failure case")
@@ -134,7 +134,7 @@ class ResultTestCase: BaseTestCase {
     func testThatDescriptionStringMatchesExpectedValueForSuccessCase() {
         // Given
         // When
-        let result = Result.Success("success")
+        let result = AFResult.Success("success")
 
         // Then
         XCTAssertEqual(result.description, "SUCCESS", "result description should match expected value for success case")
@@ -143,7 +143,7 @@ class ResultTestCase: BaseTestCase {
     func testThatDescriptionStringMatchesExpectedValueForFailureCase() {
         // Given
         // When
-        let result = Result<String>.Failure(nil, error)
+        let result = AFResult<String>.Failure(nil, error)
 
         // Then
         XCTAssertEqual(result.description, "FAILURE", "result description should match expected value for failure case")
@@ -154,7 +154,7 @@ class ResultTestCase: BaseTestCase {
     func testThatDebugDescriptionStringMatchesExpectedValueForSuccessCase() {
         // Given
         // When
-        let result = Result.Success("success value")
+        let result = AFResult.Success("success value")
 
         // Then
         XCTAssertEqual(
@@ -170,9 +170,9 @@ class ResultTestCase: BaseTestCase {
         let imageData = NSData(contentsOfURL: URLForResource("rainbow", withExtension: "jpg"))!
 
         // When
-        let resultWithUTF8Data = Result<String>.Failure(utf8Data, error)
-        let resultWithImageData = Result<String>.Failure(imageData, error)
-        let resultWithNoData = Result<String>.Failure(nil, error)
+        let resultWithUTF8Data = AFResult<String>.Failure(utf8Data, error)
+        let resultWithImageData = AFResult<String>.Failure(imageData, error)
+        let resultWithNoData = AFResult<String>.Failure(nil, error)
 
         // Then
         XCTAssertEqual(

@@ -1,4 +1,4 @@
-// Result.swift
+// AFResult.swift
 //
 // Copyright (c) 2014–2015 Alamofire Software Foundation (http://alamofire.org/)
 //
@@ -30,7 +30,7 @@ import Foundation
     - Failure: The request encountered an error resulting in a failure. The associated values are the original data 
                provided by the server as well as the error that caused the failure.
 */
-public enum Result<Value> {
+public enum AFResult<Value> {
     case Success(Value)
     case Failure(NSData?, ErrorType)
 
@@ -82,7 +82,7 @@ public enum Result<Value> {
 
 // MARK: - CustomStringConvertible
 
-extension Result: CustomStringConvertible {
+extension AFResult: CustomStringConvertible {
     public var description: String {
         switch self {
         case .Success:
@@ -95,7 +95,7 @@ extension Result: CustomStringConvertible {
 
 // MARK: - CustomDebugStringConvertible
 
-extension Result: CustomDebugStringConvertible {
+extension AFResult: CustomDebugStringConvertible {
     public var debugDescription: String {
         switch self {
         case .Success(let value):

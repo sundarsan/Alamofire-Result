@@ -32,7 +32,7 @@ class ResponseDataTestCase: BaseTestCase {
 
         var request: NSURLRequest?
         var response: NSHTTPURLResponse?
-        var result: Result<NSData>!
+        var result: AFResult<NSData>!
 
         // When
         Alamofire.request(.GET, URLString, parameters: ["foo": "bar"])
@@ -62,7 +62,7 @@ class ResponseDataTestCase: BaseTestCase {
 
         var request: NSURLRequest?
         var response: NSHTTPURLResponse?
-        var result: Result<NSData>!
+        var result: AFResult<NSData>!
 
         // When
         Alamofire.request(.GET, URLString, parameters: ["foo": "bar"])
@@ -96,7 +96,7 @@ class ResponseStringTestCase: BaseTestCase {
 
         var request: NSURLRequest?
         var response: NSHTTPURLResponse?
-        var result: Result<String>!
+        var result: AFResult<String>!
 
         // When
         Alamofire.request(.GET, URLString, parameters: ["foo": "bar"])
@@ -126,7 +126,7 @@ class ResponseStringTestCase: BaseTestCase {
 
         var request: NSURLRequest?
         var response: NSHTTPURLResponse?
-        var result: Result<String>!
+        var result: AFResult<String>!
 
         // When
         Alamofire.request(.GET, URLString, parameters: ["foo": "bar"])
@@ -160,7 +160,7 @@ class ResponseJSONTestCase: BaseTestCase {
 
         var request: NSURLRequest?
         var response: NSHTTPURLResponse?
-        var result: Result<AnyObject>!
+        var result: AFResult<AnyObject>!
 
         // When
         Alamofire.request(.GET, URLString, parameters: ["foo": "bar"])
@@ -190,7 +190,7 @@ class ResponseJSONTestCase: BaseTestCase {
 
         var request: NSURLRequest?
         var response: NSHTTPURLResponse?
-        var result: Result<AnyObject>!
+        var result: AFResult<AnyObject>!
 
         // When
         Alamofire.request(.GET, URLString, parameters: ["foo": "bar"])
@@ -220,7 +220,7 @@ class ResponseJSONTestCase: BaseTestCase {
 
         var request: NSURLRequest?
         var response: NSHTTPURLResponse?
-        var result: Result<AnyObject>!
+        var result: AFResult<AnyObject>!
 
         // When
         Alamofire.request(.GET, URLString, parameters: ["foo": "bar"])
@@ -255,7 +255,7 @@ class ResponseJSONTestCase: BaseTestCase {
 
         var request: NSURLRequest?
         var response: NSHTTPURLResponse?
-        var result: Result<AnyObject>!
+        var result: AFResult<AnyObject>!
 
         // When
         Alamofire.request(.POST, URLString, parameters: ["foo": "bar"])

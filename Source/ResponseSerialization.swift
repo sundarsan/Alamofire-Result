@@ -34,7 +34,7 @@ public protocol ResponseSerializer {
     /**
         A closure used by response handlers that takes a request, response, and data and returns a result.
     */
-    var serializeResponse: (NSURLRequest?, NSHTTPURLResponse?, NSData?) -> Result<SerializedObject> { get }
+    var serializeResponse: (NSURLRequest?, NSHTTPURLResponse?, NSData?) -> AFResult<SerializedObject> { get }
 }
 
 // MARK: -
@@ -49,7 +49,7 @@ public struct GenericResponseSerializer<T>: ResponseSerializer {
     /**
         A closure used by response handlers that takes a request, response, and data and returns a result.
     */
-    public var serializeResponse: (NSURLRequest?, NSHTTPURLResponse?, NSData?) -> Result<SerializedObject>
+    public var serializeResponse: (NSURLRequest?, NSHTTPURLResponse?, NSData?) -> AFResult<SerializedObject>
 
     /**
         Initializes the `GenericResponseSerializer` instance with the given serialize response closure.
@@ -58,7 +58,7 @@ public struct GenericResponseSerializer<T>: ResponseSerializer {
 
         - returns: The new generic response serializer instance.
     */
-    public init(serializeResponse: (NSURLRequest?, NSHTTPURLResponse?, NSData?) -> Result<SerializedObject>) {
+    public init(serializeResponse: (NSURLRequest?, NSHTTPURLResponse?, NSData?) -> AFResult<SerializedObject>) {
         self.serializeResponse = serializeResponse
     }
 }
@@ -102,11 +102,11 @@ extension Request {
     public func response<T: ResponseSerializer, V where T.SerializedObject == V>(
         queue queue: dispatch_queue_t? = nil,
         responseSerializer: T,
-        completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<V>) -> Void)
+        completionHandler: (NSURLRequest?, NSHTTPURLResponse?, AFResult<V>) -> Void)
         -> Self
     {
         delegate.queue.addOperationWithBlock {
-            let result: Result<T.SerializedObject> = {
+            let result: AFResult<T.SerializedObject> = {
                 if let error = self.delegate.error {
                     return .Failure(self.delegate.data, error)
                 } else {
@@ -151,7 +151,7 @@ extension Request {
 
         - returns: The request.
     */
-    public func responseData(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<NSData>) -> Void) -> Self {
+    public func responseData(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, AFResult<NSData>) -> Void) -> Self {
         return response(responseSerializer: Request.dataResponseSerializer(), completionHandler: completionHandler)
     }
 }
@@ -212,7 +212,7 @@ extension Request {
     */
     public func responseString(
         encoding encoding: NSStringEncoding? = nil,
-        completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<String>) -> Void)
+        completionHandler: (NSURLRequest?, NSHTTPURLResponse?, AFResult<String>) -> Void)
         -> Self
     {
         return response(
@@ -266,7 +266,7 @@ extension Request {
     */
     public func responseJSON(
         options options: NSJSONReadingOptions = .AllowFragments,
-        completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<AnyObject>) -> Void)
+        completionHandler: (NSURLRequest?, NSHTTPURLResponse?, AFResult<AnyObject>) -> Void)
         -> Self
     {
         return response(
@@ -320,7 +320,7 @@ extension Request {
     */
     public func responsePropertyList(
         options options: NSPropertyListReadOptions = NSPropertyListReadOptions(),
-        completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<AnyObject>) -> Void)
+        completionHandler: (NSURLRequest?, NSHTTPURLResponse?, AFResult<AnyObject>) -> Void)
         -> Self
     {
         return response(

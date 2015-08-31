@@ -337,7 +337,7 @@ class DownloadResumeDataTestCase: BaseTestCase {
 
         var request: NSURLRequest?
         var response: NSHTTPURLResponse?
-        var result: Result<AnyObject>!
+        var result: AFResult<AnyObject>!
 
         // When
         let download = Alamofire.download(.GET, URLString, destination: destination)
