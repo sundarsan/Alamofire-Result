@@ -5,7 +5,7 @@ use_frameworks!
 
 target 'Alamofire iOS', :exclusive => true do
     platform :ios, '8.0'
-    pod 'Result', '0.6.0-beta.4'
+    pod 'Result', '1.0.2'
 end
 
 target 'Alamofire iOS Tests', :exclusive => true do
@@ -21,7 +21,7 @@ end
 
 target 'Alamofire OSX', :exclusive => true do
     platform :osx, '10.10'
-    pod 'Result', '0.6.0-beta.4'
+    pod 'Result', '1.0.2'
 end
 
 target 'Alamofire OSX Tests', :exclusive => true do
@@ -31,5 +31,5 @@ end
 
 target 'Alamofire watchOS', :exclusive => true do
 	platform :watchos, '2.0'
-    pod 'Result', '0.6.0-beta.4'
+    pod 'Result', '1.0.2'
 end
