@@ -1,7 +1,7 @@
 **Since the introduction in Swift 2.1 of import enum, Alamofire can now be used in conjunction with antitypical/Result.
 We recomend to switch to the following [solution](https://gist.github.com/fchaillou/c9f798a747b939728aca) and not use anymore this  fork.**
 
-**With the release of  Swift 2.2, this fork is officially deprecated and will be delete 01 September 2016.**
+**With the release of  Swift 2.2, this fork is officially deprecated and will be deleted 01 September 2016.**
 
 ![Alamofire: Result<Elegant> Networking in Swift](https://cloud.githubusercontent.com/assets/858090/9784273/86d5894a-57aa-11e5-8428-9ad85baad64c.gif)
 
